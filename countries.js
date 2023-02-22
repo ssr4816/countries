@@ -5,8 +5,10 @@ await calculateSum();
 async function calculateSum() { // main function
     const validCountries = await getValidCountries(process.argv[2] || 0); //get the top 20 countries which meets the conditions
     let sum = 0;
+    console.log(validCountries.length)
     for (let i = 0; i < validCountries.length; i++) {
         let c1 = validCountries[i].latlng;
+        console.log(validCountries[i].population,validCountries[i].latlng)
         for (let j = i + 1; j < validCountries.length; j++) {
             const c2 = validCountries[j].latlng;
             sum += distance({ c1, c2 })
@@ -25,7 +27,7 @@ async function getValidCountries(populationLimit) { //get the top 20 countries w
         }).length > 0;
     }).filter((country) => {
         return country.population >= populationLimit //return the countries which are greater than given limit
-    }).sort((a, b) => b.population - a.population).slice(0, 20) //return the top 20 countries
+    }).sort((a, b) => a.population - b.population).slice(0, 20) //return the top 20 countries
     return validCountries;
 }
 
@@ -43,5 +45,6 @@ function distance({ c1 = [0, 0], c2 = [0, 0] }) { //calculate distance between t
         * Math.pow(Math.sin(dlon / 2), 2);
     let c = 2 * Math.asin(Math.sqrt(a));
     let r = 6371;
-    return (c * r);
+    const distance = c * r;
+    return Math.round((distance + Number.EPSILON) * 100) / 100
 }
