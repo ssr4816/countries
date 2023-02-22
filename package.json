@@ -1,0 +1,23 @@
+{
+  "name": "countries",
+  "version": "1.0.0",
+  "description": "",
+  "main": "countries.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssr4816/countries.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssr4816/countries/issues"
+  },
+  "homepage": "https://github.com/ssr4816/countries#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  }
+}
