@@ -5,10 +5,8 @@ await calculateSum();
 async function calculateSum() { // main function
     const validCountries = await getValidCountries(process.argv[2] || 0); //get the top 20 countries which meets the conditions
     let sum = 0;
-    console.log(validCountries.length)
     for (let i = 0; i < validCountries.length; i++) {
         let c1 = validCountries[i].latlng;
-        console.log(validCountries[i].population,validCountries[i].latlng)
         for (let j = i + 1; j < validCountries.length; j++) {
             const c2 = validCountries[j].latlng;
             sum += distance({ c1, c2 })
